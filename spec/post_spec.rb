@@ -1,8 +1,8 @@
 require "spec_helper"
 
-describe "Post" do 
+describe "Post" do
 
-  let!(:author) { Author.new("Sophie") } 
+  let!(:author) { Author.new("Sophie") }
   let!(:post) {Post.new("My Blog Post!", author)}
 
   describe 'Post' do
@@ -20,8 +20,8 @@ describe "Post" do
     end
   end
 
-  describe "#new" do 
-    it "is initialized with an argument of a title and an optional author object" do 
+  describe "#new" do
+    it "is initialized with an argument of a title and an optional author object" do
       expect{Post.new("Hello World", author)}.to_not raise_error
       expect{Post.new("Hi Again World")}.to_not raise_error, 'The author argument should be optional!'
     end
@@ -31,24 +31,24 @@ describe "Post" do
     end
   end
 
-  describe "#title" do 
+  describe "#title" do
     it "has a title" do
       expect(post.title).to eq("My Blog Post!")
     end
   end
 
   describe "#author" do
-    it "belongs to an author" do 
+    it "belongs to an author" do
       expect(post.author).to eq(author)
-    end 
+    end
   end
 
   describe "#author_name" do
-    it "knows the name of it's author" do 
+    it "knows the name of it's author" do
       expect(post.author_name).to eq("Sophie")
-    end 
+    end
 
-    it "returns nil if the post does not have an author" do 
+    it "returns nil if the post does not have an author" do
       no_author_post = Post.new("I feel kinda authorless!")
       expect(no_author_post.author_name).to eq nil
     end
