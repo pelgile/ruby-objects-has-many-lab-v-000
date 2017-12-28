@@ -2,22 +2,22 @@ require "spec_helper"
 
 describe "Author" do
 
-  let!(:betty) { Author.new("Betty") } 
-  let!(:post) { Post.new("I love to program while drinking chamomile tea!", betty) } 
+  let!(:betty) { Author.new("Betty") }
+  let!(:post) { Post.new("I love to program while drinking chamomile tea!", betty) }
 
-  describe "#new" do 
-    it "is initialized with a name" do 
+  describe "#new" do
+    it "is initialized with a name" do
       expect{Author.new("Betty")}.to_not raise_error
     end
   end
 
   describe "#name" do
-    it "has an attr_accessor for name" do 
+    it "has an attr_accessor for name" do
       expect(betty.name).to eq("Betty")
     end
   end
 
-  describe "#posts" do 
+  describe "#posts" do
     it "selects the posts from the Post class which have `self` as the author" do
       expect(betty.posts).to be_a(Array)
       expect(betty.posts).to include(post)
@@ -32,8 +32,8 @@ describe "Author" do
     end
   end
 
-  describe "#add_post_by_title" do 
-    it "takes in an argument of a post title, creates a new post with it and associates the post and author" do 
+  describe "#add_post_by_title" do
+    it "takes in an argument of a post title, creates a new post with it and associates the post and author" do
       betty.add_post_by_title("My Great Blog Post")
       expect(betty.posts.last.title).to eq("My Great Blog Post")
       expect(betty.posts.last.author).to eq(betty)
